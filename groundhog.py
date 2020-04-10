@@ -26,11 +26,10 @@ if __name__ == "__main__":
             inp = input()
             if inp == "STOP":
                 run_exit(vs, T)
-            else:
-                inp = float(inp)
+            inp = float(inp)
+            do_magic(T, vs, inp)
         except ValueError:
             print("Invalid temperature numeral", file=stderr)
             exit(84)
         except EOFError:
             exit(0)
-        do_magic(T, vs, inp)
