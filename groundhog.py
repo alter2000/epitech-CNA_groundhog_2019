@@ -1,17 +1,7 @@
 #!/usr/bin/env python3
 
 from sys import argv, exit, stderr
-from helpers import do_magic
-
-
-def run_exit(ls):
-    def parse(ls):
-        return ls
-
-    ls = parse(ls)
-    print("Global tendency switched {0:d} times\n{0:d} weirdest values are "
-            .format(ls), ls)
-    exit(0)
+from helpers import do_magic, run_exit
 
 
 if __name__ == "__main__":
@@ -35,10 +25,12 @@ if __name__ == "__main__":
         try:
             inp = input()
             if inp == "STOP":
-                run_exit(vs)
+                run_exit(vs, T)
             else:
                 inp = float(inp)
         except ValueError:
             print("Invalid temperature numeral", file=stderr)
             exit(84)
+        except EOFError:
+            exit(0)
         do_magic(T, vs, inp)
