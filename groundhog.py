@@ -28,8 +28,8 @@ if __name__ == "__main__":
                 run_exit(vs, T)
             inp = float(inp)
             do_magic(T, vs, inp)
-        except ValueError:
-            print("Invalid temperature numeral", file=stderr)
-            exit(84)
         except EOFError:
             exit(0)
+        except Exception as e:
+            print("Invalid program state. got exception: ", e, file=stderr)
+            exit(84)
